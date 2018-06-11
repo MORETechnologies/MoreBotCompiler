@@ -1,8 +1,23 @@
 #include <Arduino.h>
 #include <MoreBotLibrary.h>
 
-WifiProcessor wifi(12, 13);
-BotMessage botMessages[100];
+// Wifi pins
+const int WifiRxPin = 12;
+const int WifiTxPin = 13;
+
+// Motor pins
+const int LeftSpeedPin = 5;
+const int LeftDirectionPin1 = 4;
+const int LeftDirectionPin2 = 3;
+const int RightSpeedPin = 6;
+const int RightDirectionPin1 = 7;
+const int RightDirectionPin2 = 8;
+
+const int MaxProgramLength = 100;
+
+WifiProcessor wifi(WifiRxPin, WifiTxPin);
+DriveController driver(LeftSpeedPin, LeftDirectionPin1, LeftDirectionPin2, RightSpeedPin, RightDirectionPin1, RightDirectionPin2);
+BotMessage botMessages[MaxProgramLength];
 int currentIndex = 0;
 int endIndex = 0;
 
@@ -41,7 +56,9 @@ void processMessage(BotMessage& message)
         botMessages[currentIndex] = message;
         currentIndex++;
     } else if (command == "repeat" || command == "end") {
-        botMessages[currentIndex] = message;
+        if (command == "repeat") {
+            botMessages[currentIndex] = message;
+        }
         endIndex = currentIndex;
         currentIndex++;
     }
