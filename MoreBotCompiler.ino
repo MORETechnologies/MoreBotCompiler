@@ -33,14 +33,14 @@ void loop()
 
     if (wifi.isMessageAvailable()) {
         BotMessage message = wifi.dequeueMessage();
-        if (showDebug) {
-            Serial.println("Wifi message received [command: " + message.getCommand() + "] [data: " + message.getData() + "]");
-        }
+        Serial.println("Wifi message received [command: " + message.getCommand() + "] [data: " + message.getData() + "]");
 
         processMessage(message);
     }
 
-    // TODO run program
+    for (int i = 0; i < endIndex; i++) {
+        runMessage(botMessages[i]);
+    }
 
     delay(100);
 }
@@ -56,10 +56,34 @@ void processMessage(BotMessage& message)
         botMessages[currentIndex] = message;
         currentIndex++;
     } else if (command == "repeat" || command == "end") {
-        if (command == "repeat") {
-            botMessages[currentIndex] = message;
-        }
+        botMessages[currentIndex] = message;
         endIndex = currentIndex;
         currentIndex++;
+    }
+}
+
+void runMessage(BotMessage& message)
+{
+    String command = message.getCommand();
+
+    if (command == "move") {
+        int direction = message.getData().substring(0, 1).toInt();
+        int speed = message.getData().substring(1).toInt();
+
+        if (direction == 0) {
+            driver.goForward(speed);
+        } else if (direction == 1) {
+            driver.turnLeft(speed);
+        } else if (direction == 2) {
+            driver.goBackward(speed);
+        } else if (direction == 3) {
+            driver.turnRight(speed);
+        } else if (direction == 4) {
+            driver.goForward(0);
+        }
+    } else if (command == "sleep") {
+        delay(message.getData().toInt());
+    } else if (command == "end") {
+        endIndex = 0;
     }
 }
