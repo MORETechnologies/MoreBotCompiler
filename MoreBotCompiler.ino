@@ -85,5 +85,6 @@ void runMessage(BotMessage& message)
         delay(message.getData().toInt());
     } else if (command == "end") {
         endIndex = 0;
+        driver.goForward(0);
     }
 }
