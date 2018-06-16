@@ -13,7 +13,7 @@ const int RightSpeedPin = 6;
 const int RightDirectionPin1 = 7;
 const int RightDirectionPin2 = 8;
 
-const int MaxProgramLength = 100;
+const int MaxProgramLength = 25;
 
 WifiProcessor wifi(WifiRxPin, WifiTxPin);
 DriveController driver(LeftSpeedPin, LeftDirectionPin1, LeftDirectionPin2, RightSpeedPin, RightDirectionPin1, RightDirectionPin2);
@@ -41,8 +41,6 @@ void loop()
     for (int i = 0; i < endIndex; i++) {
         runMessage(botMessages[i]);
     }
-
-    delay(100);
 }
 
 void processMessage(BotMessage& message)
