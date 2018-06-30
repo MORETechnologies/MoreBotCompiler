@@ -24,7 +24,7 @@ int endIndex = 0;
 void setup()
 {
     Serial.begin(9600);
-    wifi.begin("TestCompiler");
+    wifi.begin("BotWifi");
 }
 
 void loop()
