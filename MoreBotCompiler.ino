@@ -67,6 +67,10 @@ void runMessage(BotMessage& message)
     if (command == "move") {
         int direction = message.getData().substring(0, 1).toInt();
         int speed = message.getData().substring(1).toInt();
+        Serial.print(F("Running move direction "));
+        Serial.print(direction);
+        Serial.print(F(" speed "));
+        Serial.println(speed);
 
         if (direction == 0) {
             driver.goForward(speed);
@@ -80,8 +84,12 @@ void runMessage(BotMessage& message)
             driver.goForward(0);
         }
     } else if (command == "sleep") {
-        delay(message.getData().toInt());
+        int sleep = message.getData().toInt();
+        Serial.print(F("Running sleep "));
+        Serial.println(sleep);
+        delay(sleep);
     } else if (command == "end") {
+        Serial.println(F("Ending"));
         endIndex = 0;
         driver.goForward(0);
     }
