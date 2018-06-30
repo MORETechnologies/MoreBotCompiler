@@ -55,8 +55,8 @@ void processMessage(BotMessage& message)
         currentIndex++;
     } else if (command == "repeat" || command == "end") {
         botMessages[currentIndex] = message;
-        endIndex = currentIndex;
         currentIndex++;
+        endIndex = currentIndex;
     }
 }
 
