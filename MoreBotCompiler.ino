@@ -1,5 +1,7 @@
+#include "BotMessage.h"
+#include "DriveController.h"
+#include "WifiProcessor.h"
 #include <Arduino.h>
-#include <MoreBotLibrary.h>
 
 // Wifi pins
 const int WifiRxPin = 12;
