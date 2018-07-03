@@ -15,7 +15,7 @@ const int RightSpeedPin = 6;
 const int RightDirectionPin1 = 7;
 const int RightDirectionPin2 = 8;
 
-const int MaxProgramLength = 25;
+const int MaxProgramLength = 50;
 
 WifiProcessor wifi(WifiRxPin, WifiTxPin);
 DriveController driver(LeftSpeedPin, LeftDirectionPin1, LeftDirectionPin2, RightSpeedPin, RightDirectionPin1, RightDirectionPin2);
