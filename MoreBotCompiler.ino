@@ -8,9 +8,9 @@ const int WifiRxPin = 12;
 const int WifiTxPin = 13;
 
 // Motor pins
-const int LeftSpeedPin = 5;
-const int LeftDirectionPin1 = 4;
-const int LeftDirectionPin2 = 3;
+const int LeftSpeedPin = 11;
+const int LeftDirectionPin1 = 10;
+const int LeftDirectionPin2 = 9;
 const int RightSpeedPin = 6;
 const int RightDirectionPin1 = 7;
 const int RightDirectionPin2 = 8;
