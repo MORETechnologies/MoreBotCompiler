@@ -27,6 +27,7 @@ void setup()
 {
     Serial.begin(9600);
     wifi.begin("BotWifi");
+    driver.setup();
 }
 
 void loop()
